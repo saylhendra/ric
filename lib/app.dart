@@ -20,12 +20,19 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       darkTheme: ThemeData.dark().copyWith(
+        primaryColorDark: Colors.purple,
         scaffoldBackgroundColor: Colors.black,
         brightness: Brightness.dark,
-        colorScheme:
-            ThemeData.dark().colorScheme.copyWith(primary: Colors.purple.shade800, secondary: Colors.purple.shade800),
+        colorScheme: ThemeData.dark().colorScheme.copyWith(
+              primary: Colors.purple.shade800,
+              secondary: Colors.purple.shade800,
+            ),
         appBarTheme: AppBarTheme(
-            color: Colors.purple.shade800, foregroundColor: Colors.white, iconTheme: IconThemeData(color: Colors.white)),
+          color: Colors.purple.shade800,
+          foregroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.white),
+          centerTitle: true,
+        ),
         useMaterial3: true,
       ),
       themeMode: ThemeMode.dark,

@@ -12,6 +12,20 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Riverpod Intensive Class'),
+          actions: [
+            Badge(
+              label: Text('+99'),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.notifications),
+              ),
+              backgroundColor: Colors.white,
+              alignment: AlignmentDirectional.topEnd,
+              isLabelVisible: true,
+              largeSize: 20.0,
+              padding: const EdgeInsets.all(5.0),
+            )
+          ],
         ),
         body: Center(
           child: Column(
