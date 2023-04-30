@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ric_apps">
+    package="com.conceptcoder.riclass">
    <application
-        android:label="ric_apps"
+        android:label="RiverpodInClass"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
