@@ -1,8 +1,10 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:ric_apps/cart.dart';
+
+import 'cart.dart';
 
 class CartCountainer extends StatelessWidget {
+  // Logger().w('🚢 [Received state]');
   final int counter;
   const CartCountainer({
     super.key,
@@ -11,8 +13,7 @@ class CartCountainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Logger().w('🚢 [CartCountainer] build]');
-
+    Logger().w('🚢 [CartCountainer] build - Sending State]');
     return Cart(counter: counter);
   }
 }

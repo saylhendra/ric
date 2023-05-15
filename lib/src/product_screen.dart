@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:ric_apps/cart.dart';
+
+import 'cart.dart';
 
 class ProductScreen extends ConsumerStatefulWidget {
   static const routeName = 'product-screen';
@@ -42,7 +43,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
               // });
               ref.read(countCartProvider.notifier).state++;
             },
-            child: Text('Add to Cart'),
+            child: const Text('Add to Cart'),
           ),
         ),
       ],

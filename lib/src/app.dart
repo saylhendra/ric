@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ric_apps/home_screen.dart';
-import 'package:ric_apps/product_screen.dart';
+import 'package:ric_apps/src/fetch_with_feature_builder.dart';
+import 'package:ric_apps/src/notification_screen.dart';
+import 'package:ric_apps/src/product_screen.dart';
+
+import 'home_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,11 +39,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.dark,
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
         ProductScreen.routeName: (context) => const ProductScreen(),
+        NotificationScreen.routeName: (context) => const NotificationScreen(),
+        FetchWithFutureBuilder.routeName: (context) => const FetchWithFutureBuilder(),
       },
     );
   }

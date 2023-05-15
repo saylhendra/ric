@@ -5,6 +5,7 @@ import 'package:logger/logger.dart';
 final countCartProvider = StateProvider((ref) => 0);
 
 class Cart extends StatelessWidget {
+  // Logger().w('🚢 [Received state]');
   final int counter;
   const Cart({
     super.key,
@@ -13,14 +14,14 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Logger().wtf('🟢 [Cart] build]');
+    Logger().wtf('🟢 [Cart] build] Display State');
 
     return Stack(
       children: [
         Badge(
           label: Text(counter.toString()),
           textColor: Colors.white,
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.red,
           child: const Icon(Icons.shopping_cart),
         )
       ],

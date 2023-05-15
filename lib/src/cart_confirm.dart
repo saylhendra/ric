@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ric_apps/cart.dart';
+
+import 'cart.dart';
 
 class CartConfirm extends StatelessWidget {
   final int counter;
@@ -13,9 +14,9 @@ class CartConfirm extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart Confirm'),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Cart(
               counter: 0,
             ),
