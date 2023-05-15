@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:ric_apps/src/fetch_with_asyncvalue.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
 
@@ -50,6 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.of(context).pushReplacementNamed(FetchWithStreamBuilder.routeName);
                   },
                   child: const Text('Fetch with StreamBuilder')),
+              SizedBox(height: 10.0),
+              FilledButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(FetchWithAsyncValue.routeName);
+                  },
+                  child: const Text('Fetch with AsyncValue')),
               SizedBox(height: 10.0),
               Card(
                 child: ListTile(

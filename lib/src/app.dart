@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ric_apps/src/fetch_with_asyncvalue.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/fetch_with_stream_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         NotificationScreen.routeName: (context) => const NotificationScreen(),
         FetchWithFutureBuilder.routeName: (context) => const FetchWithFutureBuilder(),
         FetchWithStreamBuilder.routeName: (context) => const FetchWithStreamBuilder(),
+        FetchWithAsyncValue.routeName: (context) => const FetchWithAsyncValue(),
       },
     );
   }
