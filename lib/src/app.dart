@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
+import 'package:ric_apps/src/fetch_with_stream_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
 import 'package:ric_apps/src/product_screen.dart';
 
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         ProductScreen.routeName: (context) => const ProductScreen(),
         NotificationScreen.routeName: (context) => const NotificationScreen(),
         FetchWithFutureBuilder.routeName: (context) => const FetchWithFutureBuilder(),
+        FetchWithStreamBuilder.routeName: (context) => const FetchWithStreamBuilder(),
       },
     );
   }

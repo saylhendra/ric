@@ -4,6 +4,7 @@ import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
 
 import 'cart_container.dart';
+import 'fetch_with_stream_builder.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = 'home-screen';
@@ -42,7 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {
                     Navigator.of(context).pushReplacementNamed(FetchWithFutureBuilder.routeName);
                   },
-                  child: Text('Fetch with FutureBuilder')),
+                  child: const Text('Fetch with FutureBuilder')),
+              SizedBox(height: 10.0),
+              FilledButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(FetchWithStreamBuilder.routeName);
+                  },
+                  child: const Text('Fetch with StreamBuilder')),
+              SizedBox(height: 10.0),
               Card(
                 child: ListTile(
                   onTap: () => addToCart(),
