@@ -4,8 +4,7 @@ import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/fetch_with_stream_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
 import 'package:ric_apps/src/product_screen.dart';
-
-import 'home_screen.dart';
+import 'package:ric_apps/src/state_provider_used.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -44,7 +43,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
+        // '/': (context) => const HomeScreen(),
+        '/': (context) => const StateProviderUsed(),
         ProductScreen.routeName: (context) => const ProductScreen(),
         NotificationScreen.routeName: (context) => const NotificationScreen(),
         FetchWithFutureBuilder.routeName: (context) => const FetchWithFutureBuilder(),

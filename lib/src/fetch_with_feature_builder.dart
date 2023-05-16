@@ -20,31 +20,27 @@ class FetchWithFutureBuilder extends StatelessWidget {
           ),
           title: const Text('Fetch with FutureBuilder'),
         ),
-        body: RefreshIndicator(
-          onRefresh: () async {
-            await Future.delayed(const Duration(seconds: 2));
-          },
-          child: FutureBuilder(
-            future: _fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return ListView.builder(
-                  itemCount: snapshot.data?.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 4.0,
-                      child: ListTile(
-                        title: Text(snapshot.data?[index]['title']),
-                      ),
-                    );
-                  },
-                );
-              }
-              return const Center(
-                child: CircularProgressIndicator(),
+        body: FutureBuilder(
+          future: _fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              Logger().wtf(snapshot.toString());
+              return ListView.builder(
+                itemCount: snapshot.data?.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 4.0,
+                    child: ListTile(
+                      title: Text(snapshot.data?[index]['title']),
+                    ),
+                  );
+                },
               );
-            },
-          ),
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ));
   }
 

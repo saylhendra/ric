@@ -27,7 +27,7 @@ class NotificationScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: myList.length,
         itemBuilder: (context, index) {
-          return ListTile(
+          return const ListTile(
             title: Text('Item'),
           );
         },

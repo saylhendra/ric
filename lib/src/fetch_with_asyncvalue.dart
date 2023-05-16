@@ -16,7 +16,9 @@ class FetchWithAsyncValue extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<dynamic>> _todos = ref.watch(todosProvider);
+    final AsyncValue<List<dynamic>> todos = ref.watch(todosProvider);
+
+    //AsynValue == FutureBuilder == StreamBuilder
 
     return Scaffold(
         appBar: AppBar(
@@ -27,26 +29,21 @@ class FetchWithAsyncValue extends ConsumerWidget {
           ),
           title: const Text('Fetch With AsyncValue'),
         ),
-        body: _todos.when(
+        body: todos.when(
           data: (todos) {
-            return RefreshIndicator(
-              onRefresh: () async {
-                ref.invalidate(todosProvider);
+            return ListView.builder(
+              itemCount: todos.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(todos[index]['body'].toString()),
+                  ),
+                );
               },
-              child: ListView.builder(
-                itemCount: todos.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(todos[index]['body'].toString()),
-                    ),
-                  );
-                },
-              ),
             );
           },
           loading: () => const Center(
-            child: CircularProgressIndicator.adaptive(),
+            child: Text('Loading....'),
           ),
           error: (error, stackTrace) => Center(
             child: Padding(
