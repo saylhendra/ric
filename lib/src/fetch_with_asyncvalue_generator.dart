@@ -1,18 +1,12 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'home_screen.dart';
+import 'provider_generator.dart';
 
-final todosProvider = FutureProvider<List>((ref) async {
-  var dio = Dio();
-  var response = await dio.get('https://jsonplaceholder.typicode.com/comments');
-  return response.data;
-});
-
-class FetchWithAsyncValue extends ConsumerWidget {
-  const FetchWithAsyncValue({super.key});
-  static const routeName = 'fetch-with-async-value';
+class FetchWithAsyncValueGenerator extends ConsumerWidget {
+  const FetchWithAsyncValueGenerator({super.key});
+  static const routeName = 'fetch-with-async-value-generator';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,7 +19,10 @@ class FetchWithAsyncValue extends ConsumerWidget {
                 .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomeScreen()), (route) => false),
             icon: const Icon(Icons.arrow_back),
           ),
-          title: const Text('Fetch With AsyncValue'),
+          title: const Text(
+            'Fetch With\nAsyncValue Generator',
+            textAlign: TextAlign.center,
+          ),
         ),
         body: todos.when(
           data: (todos) {

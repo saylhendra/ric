@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:ric_apps/src/fetch_with_asyncvalue.dart';
+import 'package:ric_apps/src/fetch_with_asyncvalue_generator.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
+import 'package:ric_apps/src/provider_non_asyncvalue.dart';
 
 import 'cart_container.dart';
 import 'fetch_with_stream_builder.dart';
@@ -40,6 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             padding: const EdgeInsets.all(8),
             children: [
+              FilledButton.tonal(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(ProviderNonAsyncValue.routeName);
+                  },
+                  child: const Text('Provider, State Provider')),
+              const SizedBox(height: 10.0),
               FilledButton(
                   onPressed: () {
                     Navigator.of(context).pushReplacementNamed(FetchWithFutureBuilder.routeName);
@@ -57,6 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.of(context).pushReplacementNamed(FetchWithAsyncValue.routeName);
                   },
                   child: const Text('Fetch with AsyncValue')),
+              const SizedBox(height: 10.0),
+              FilledButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed(FetchWithAsyncValueGenerator.routeName);
+                  },
+                  child: const Text('Fetch with AsyncValue Generator')),
               const SizedBox(height: 10.0),
               Card(
                 child: ListTile(

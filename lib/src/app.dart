@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ric_apps/src/fetch_with_asyncvalue.dart';
+import 'package:ric_apps/src/fetch_with_asyncvalue_generator.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/fetch_with_stream_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
 import 'package:ric_apps/src/product_screen.dart';
-import 'package:ric_apps/src/state_provider_used.dart';
+
+import 'home_screen.dart';
+import 'provider_non_asyncvalue.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -43,13 +46,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        // '/': (context) => const HomeScreen(),
-        '/': (context) => const StateProviderUsed(),
+        '/': (context) => const HomeScreen(),
+        // '/': (context) => const StateProviderUsed(),
+        // '/': (context) => const FetchWithFutureBuilder(),
+        // '/': (context) => const FetchWithAsyncValue(),
         ProductScreen.routeName: (context) => const ProductScreen(),
         NotificationScreen.routeName: (context) => const NotificationScreen(),
+        ProviderNonAsyncValue.routeName: (context) => const ProviderNonAsyncValue(),
         FetchWithFutureBuilder.routeName: (context) => const FetchWithFutureBuilder(),
         FetchWithStreamBuilder.routeName: (context) => const FetchWithStreamBuilder(),
         FetchWithAsyncValue.routeName: (context) => const FetchWithAsyncValue(),
+        FetchWithAsyncValueGenerator.routeName: (context) => const FetchWithAsyncValueGenerator(),
       },
     );
   }
