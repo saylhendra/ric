@@ -6,6 +6,7 @@ import 'package:ric_apps/src/fetch_with_asyncvalue.dart';
 import 'package:ric_apps/src/fetch_with_asyncvalue_generator.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
 import 'package:ric_apps/src/notification_screen.dart';
+import 'package:ric_apps/src/provider_generator.dart';
 import 'package:ric_apps/src/provider_non_asyncvalue.dart';
 
 import 'cart_container.dart';
@@ -32,7 +33,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: InkWell(
-              onTap: () => ref.read(myCityControllerProvider.notifier).changeMyCityName('Cijantung III Jakarta Timur'),
+              onTap: () => ref.read(myCityControllerProvider.notifier).changeMyCityName('You Clicked Me'),
               child: Text(myCityState)),
           actions: [
             Padding(
@@ -81,23 +82,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 child: ListTile(
                   onTap: () => addToCart(),
                   leading: const Icon(Icons.ac_unit),
-                  title: const Text('Item 1'),
+                  title: const Text('Click me to add to cart'),
                 ),
               ),
               Card(
                 child: ListTile(
                   onTap: () => addToCart(),
                   leading: const Icon(Icons.ac_unit),
-                  title: const Text('Item 2'),
+                  title: const Text('Click me to add to cart'),
                 ),
               ),
               Card(
                 child: ListTile(
                   onTap: () => addToCart(),
                   leading: const Icon(Icons.ac_unit),
-                  title: const Text('Item 3'),
+                  title: const Text('Click me to add to cart'),
                 ),
               ),
+              Text(ref.watch(listCartProvider).toString())
             ],
           ),
         ),
@@ -107,8 +109,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   addToCart() {
     Logger().w('🚢 [Sending state]');
-    setState(() {
-      counterCart++;
-    });
+    ref.read(listCartProvider.notifier).doAddToCart();
   }
 }

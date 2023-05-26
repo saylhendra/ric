@@ -6,7 +6,7 @@ part of 'providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myCityControllerHash() => r'94b26eb8956ae0faedd43e7498ba3ecc663d17b2';
+String _$myCityControllerHash() => r'4abd7dadf240a34b9a8698964be33e924cd0c45c';
 
 /// See also [MyCityController].
 @ProviderFor(MyCityController)

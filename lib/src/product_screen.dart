@@ -25,12 +25,12 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Screen'),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Cart(
-              counter: count,
-            ),
+                // counter: count,
+                ),
           )
         ],
       ),

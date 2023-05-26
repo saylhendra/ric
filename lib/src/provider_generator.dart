@@ -13,6 +13,18 @@ class ListTodo extends _$ListTodo {
   }
 }
 
+@riverpod
+class ListCart extends _$ListCart {
+  @override
+  List build() {
+    return [];
+  }
+
+  void doAddToCart() {
+    state = [...state, 'new item'];
+  }
+}
+
 
 
 

@@ -14,6 +14,7 @@ class CartCountainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Logger().w('🚢 [CartCountainer] build - Sending State]');
-    return Cart(counter: counter);
+    // return Cart(counter: counter);
+    return const Cart();
   }
 }
