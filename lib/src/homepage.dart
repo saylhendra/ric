@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyWidget'),
+        title: const Text('MyWidget'),
       ),
       body: Column(
         children: arrayOfEmployee.map((e) {
