@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ric_apps/src/detail_todos.dart';
 import 'package:ric_apps/src/fetch_with_asyncvalue.dart';
 import 'package:ric_apps/src/fetch_with_asyncvalue_generator.dart';
 import 'package:ric_apps/src/fetch_with_feature_builder.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
+        // '/': (context) => const HomePage(),
         '/': (context) => const HomeScreen(),
         // '/': (context) => const StateProviderUsed(),
         // '/': (context) => const FetchWithFutureBuilder(),
@@ -57,6 +59,7 @@ class MyApp extends StatelessWidget {
         FetchWithStreamBuilder.routeName: (context) => const FetchWithStreamBuilder(),
         FetchWithAsyncValue.routeName: (context) => const FetchWithAsyncValue(),
         FetchWithAsyncValueGenerator.routeName: (context) => const FetchWithAsyncValueGenerator(),
+        DetailTodos.routeName: (context) => const DetailTodos(),
       },
     );
   }

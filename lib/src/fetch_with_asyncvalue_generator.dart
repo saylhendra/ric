@@ -10,7 +10,7 @@ class FetchWithAsyncValueGenerator extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final todos = ref.watch(todosProvider);
+    final todos = ref.watch(listTodoProvider);
 
     return Scaffold(
         appBar: AppBar(
@@ -19,46 +19,49 @@ class FetchWithAsyncValueGenerator extends ConsumerWidget {
                 .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomeScreen()), (route) => false),
             icon: const Icon(Icons.arrow_back),
           ),
-          title: const Text(
-            'Fetch With\nAsyncValue Generator',
-            textAlign: TextAlign.center,
-          ),
+          title: const Text('Fetch with\nRiverpod Generator', textAlign: TextAlign.center),
         ),
         body: todos.when(
-          data: (todos) {
-            return ListView.builder(
-              itemCount: todos.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    title: Text('body: ${todos[index]['body']}\nemail: ${todos[index]['email']}\nid: ${todos[index]['id']}'),
-                  ),
-                );
+          data: (datas) {
+            return RefreshIndicator.adaptive(
+              onRefresh: () async {
+                return ref.invalidate(listTodoProvider);
               },
+              child: ListView.builder(
+                padding: const EdgeInsets.all(8.0),
+                itemCount: datas.length,
+                itemBuilder: (context, index) {
+                  var singleTodo = datas[index];
+
+                  return Card(
+                    color: Colors.amber,
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.purpleAccent,
+                        child: Text('${singleTodo['id']}'),
+                      ),
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('${singleTodo['email']}'),
+                          Text('${singleTodo['body']}'),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             );
           },
-          loading: () => const Center(
-            child: CircularProgressIndicator.adaptive(),
-          ),
+          loading: () => const Center(child: CircularProgressIndicator.adaptive()),
           error: (error, stackTrace) => Center(
             child: Padding(
               padding: const EdgeInsets.all(18.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.error_outline,
-                    color: Colors.yellow,
-                    size: 60,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text('Error: $error'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text('Stack trace: $stackTrace'),
-                  ),
+                  const Icon(Icons.error_outline, color: Colors.red, size: 60),
+                  Padding(padding: const EdgeInsets.only(top: 16), child: Text('Error: $error')),
                 ],
               ),
             ),

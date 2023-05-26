@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ric_apps/src/detail_todos.dart';
 
 import 'home_screen.dart';
 
-final todosProvider = FutureProvider<List>((ref) async {
+final todosProvider = FutureProvider.autoDispose<List>((ref) async {
   var dio = Dio();
   var response = await dio.get('https://jsonplaceholder.typicode.com/comments');
   return response.data;
 });
+
+final listTodoProvider = StateProvider<List>((ref) => []);
 
 class FetchWithAsyncValue extends ConsumerWidget {
   const FetchWithAsyncValue({super.key});
@@ -21,10 +24,9 @@ class FetchWithAsyncValue extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () => Navigator.of(context)
-                .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomeScreen()), (route) => false),
-            icon: const Icon(Icons.arrow_back),
-          ),
+              onPressed: () => Navigator.of(context)
+                  .pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomeScreen()), (route) => false),
+              icon: const Icon(Icons.arrow_back)),
           title: const Text('Fetch With AsyncValue'),
         ),
         body: todos.when(
@@ -34,6 +36,12 @@ class FetchWithAsyncValue extends ConsumerWidget {
               itemBuilder: (context, index) {
                 return Card(
                   child: ListTile(
+                    onTap: () {
+                      ref.read(listTodoProvider.notifier).state = todos;
+                      Navigator.of(context).pushNamed(
+                        DetailTodos.routeName,
+                      );
+                    },
                     title: Text('body: ${todos[index]['body']}\nemail: ${todos[index]['email']}\nid: ${todos[index]['id']}'),
                   ),
                 );
@@ -41,7 +49,7 @@ class FetchWithAsyncValue extends ConsumerWidget {
             );
           },
           loading: () => const Center(
-            child: CircularProgressIndicator.adaptive(),
+            child: Text('Loading...'),
           ),
           error: (error, stackTrace) => Center(
             child: Padding(

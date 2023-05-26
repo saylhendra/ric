@@ -31,7 +31,7 @@ class FetchWithFutureBuilder extends StatelessWidget {
                   return Card(
                     elevation: 4.0,
                     child: ListTile(
-                      title: Text(snapshot.data?[index]['title']),
+                      title: Text(snapshot.data?[index]['title'].toString() ?? ''),
                     ),
                   );
                 },
