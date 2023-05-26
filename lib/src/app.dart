@@ -8,6 +8,7 @@ import 'package:ric_apps/src/notification_screen.dart';
 import 'package:ric_apps/src/product_screen.dart';
 
 import 'home_screen.dart';
+import 'homepage.dart';
 import 'provider_non_asyncvalue.dart';
 
 class MyApp extends StatelessWidget {
@@ -47,11 +48,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        // '/': (context) => const HomePage(),
         '/': (context) => const HomeScreen(),
-        // '/': (context) => const StateProviderUsed(),
-        // '/': (context) => const FetchWithFutureBuilder(),
-        // '/': (context) => const FetchWithAsyncValue(),
+        HomePage.routeName: (context) => const HomePage(),
         ProductScreen.routeName: (context) => const ProductScreen(),
         NotificationScreen.routeName: (context) => const NotificationScreen(),
         ProviderNonAsyncValue.routeName: (context) => const ProviderNonAsyncValue(),
